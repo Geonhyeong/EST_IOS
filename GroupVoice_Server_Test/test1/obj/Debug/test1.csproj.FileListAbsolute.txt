@@ -1,0 +1,7 @@
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\test1\bin\Debug\test1.exe.config
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\test1\bin\Debug\test1.exe
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\test1\bin\Debug\test1.pdb
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\test1\obj\Debug\test1.csprojAssemblyReference.cache
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\test1\obj\Debug\test1.csproj.CoreCompileInputs.cache
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\test1\obj\Debug\test1.exe
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\test1\obj\Debug\test1.pdb

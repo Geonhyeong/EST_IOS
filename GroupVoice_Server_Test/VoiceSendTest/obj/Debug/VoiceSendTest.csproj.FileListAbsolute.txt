@@ -1,0 +1,7 @@
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\VoiceSendTest\bin\Debug\VoiceSendTest.exe.config
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\VoiceSendTest\bin\Debug\VoiceSendTest.exe
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\VoiceSendTest\bin\Debug\VoiceSendTest.pdb
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\VoiceSendTest\obj\Debug\VoiceSendTest.csprojAssemblyReference.cache
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\VoiceSendTest\obj\Debug\VoiceSendTest.csproj.CoreCompileInputs.cache
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\VoiceSendTest\obj\Debug\VoiceSendTest.exe
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\VoiceSendTest\obj\Debug\VoiceSendTest.pdb

@@ -1,0 +1,7 @@
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\lgh\bin\Debug\lgh.exe.config
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\lgh\bin\Debug\lgh.exe
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\lgh\bin\Debug\lgh.pdb
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\lgh\obj\Debug\lgh.csprojAssemblyReference.cache
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\lgh\obj\Debug\lgh.csproj.CoreCompileInputs.cache
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\lgh\obj\Debug\lgh.exe
+C:\Users\PC\Documents\Visual Studio 2017\Projects\GroupVoice_Server_Test\lgh\obj\Debug\lgh.pdb
