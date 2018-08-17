@@ -164,7 +164,7 @@ extension ConnectionManager {
             if let rmPort = remotePort, let inPort = incommingPort, let addr = remoteAddress{
             
                 try socket_reg.bind(toPort: UInt16(inPort+1))
-                try socket_reg.connect(toHost: addr, onPort: UInt16(60000))
+                try socket_reg.connect(toHost: addr, onPort: UInt16(50000))
                 let proto = Header(command: Header.RegisterCommand,
                                    idlength: (ID?.count)!, id: ID!,
                                    datalength: 0).toByteArray()
