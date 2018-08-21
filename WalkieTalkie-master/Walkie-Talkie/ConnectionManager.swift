@@ -111,17 +111,26 @@ final class ConnectionManager: NSObject, GCDAsyncUdpSocketDelegate{
         
         dataObservable.subscribe(onNext: { [weak self] data in
             
-            let proto = [UInt8]("01087602581".utf8)
+            let proto = Header(command: "VOI:", idlength: 11, id: "01087602581", datalength: data.count).toByteArray()
             var datat = Data(bytes: proto)
             datat.append(data)
-            
+
             self?.sendData(data: datat)
             
+//            self?.sendData(data: data)
         }).disposed(by: disposeBag)
         
     }
     
-    
+    func intToByte(int : Int) -> [UInt8] {
+        var bytearray : [UInt8] = [0, 0, 0, 0]
+        bytearray[0] = UInt8(int>>24 & 0xff)
+        bytearray[1] = UInt8(int>>16 & 0xff)
+        bytearray[2] = UInt8(int>>8 & 0xff)
+        bytearray[3] = UInt8(int & 0xff)
+        
+        return bytearray
+    }
     
     @objc fileprivate func reachabilityChanged()
     {

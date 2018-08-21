@@ -57,7 +57,7 @@ class SettingsVC: UIViewController, UITextFieldDelegate {
     
     @IBAction func saveParams(_ sender: UIButton)
     {
-        
+        connectionManager.disconnect()
         validator.validate { [unowned self] val_errs in
             
             self.connectionManager.remotePort = Int(self.remotePortTF.text!)
