@@ -2,8 +2,8 @@
 //  UIViewExtensions.swift
 //  RealEstate
 //
-//  Created by Eugene on 01.05.17.
-//  Copyright © 2017 RealEstate. All rights reserved.
+//  Created by GeonHyeong on 18.08.22.
+//  Copyright © 2018 GeonHyeong. All rights reserved.
 //
 
 import Foundation

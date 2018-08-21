@@ -2,8 +2,8 @@
 //  WalkieTalkieVC.swift
 //  Walkie-Talkie
 //
-//  Created by Eugene on 18.02.17.
-//  Copyright © 2017 Eugenious. All rights reserved.
+//  Created by GeonHyeong on 18.08.22.
+//  Copyright © 2018 GeonHyeong. All rights reserved.
 //
 
 import UIKit
@@ -19,8 +19,9 @@ class WalkieTalkieVC: UIViewController {
     
     @IBOutlet weak var connectionIndicator: UIView!
     @IBOutlet weak var talkBtn: UIButton!
+    @IBOutlet weak var disconnectBtn: UIButton!
     @IBOutlet weak var connectBtn: LoadingButton!
-    @IBOutlet weak var speakerSegmContr: UISegmentedControl!
+//    @IBOutlet weak var speakerSegmContr: UISegmentedControl!
     @IBOutlet weak var addressView: AddressView!
     @IBOutlet weak var settingsBtn: UIBarButtonItem!
     
@@ -33,20 +34,23 @@ class WalkieTalkieVC: UIViewController {
     {
         super.viewDidLoad()
 
-        let stopTalkingEvents = [UIControlEvents.touchCancel, UIControlEvents.touchDragOutside, UIControlEvents.touchUpInside].map{talkBtn.rx.controlEvent($0)}.map{ $0.map{AudioManager.MicState.Off}}
+        disconnectBtn.isEnabled = false
+        let stopTalkingEvents = [UIControlEvents.touchUpInside].map{disconnectBtn.rx.controlEvent($0)}.map{ $0.map{AudioManager.MicState.Off}}
         let startTalkingEvent =  talkBtn.rx.controlEvent(UIControlEvents.touchUpInside).map{AudioManager.MicState.On}
         
         let talkToggle = Observable<AudioManager.MicState>.merge(stopTalkingEvents + [startTalkingEvent]).debug()
 
-        let speakerToggle = speakerSegmContr.rx.selectedSegmentIndex.asObservable().flatMap { selectedIdx -> Observable<AudioManager.SpeakerType> in
-            guard let speakerType = AudioManager.SpeakerType(rawValue:selectedIdx) else {
-                return Observable.never()
-            }
-            return Observable.just(speakerType)
-        }
+//        let speakerToggle = speakerSegmContr.rx.selectedSegmentIndex.asObservable().flatMap { selectedIdx -> Observable<AudioManager.SpeakerType> in
+//            guard let speakerType = AudioManager.SpeakerType(rawValue:selectedIdx) else {
+//                return Observable.never()
+//            }
+//            return Observable.just(speakerType)
+//        }
+        
+        let speakerType : Observable<AudioManager.SpeakerType> = Observable.just(AudioManager.SpeakerType(rawValue: 1)!)
         
         do {
-            audioManager = try AudioManager(talkToggle, speakerToggle:speakerToggle)
+            audioManager = try AudioManager(talkToggle, speakerToggle:speakerType, TalkBtn:talkBtn, DisconnectBtn:disconnectBtn)
             connectionManager = ConnectionManager(dataObservable: audioManager.audioDataOutput)
         }catch{
             let mes = "Failed to initiate audion manager: \(error)"
@@ -97,19 +101,20 @@ class WalkieTalkieVC: UIViewController {
         switch not.name {
             case UDP.didConnect:
                 toggleConnectionIndicator(enable: true)
-                connectBtn.isEnabled=false
+                
+                connectBtn.isEnabled = false
+                connectBtn.isHidden = true
                 talkBtn.backgroundColor = UIColor.green
                 talkBtn.isEnabled = true
-                speakerSegmContr.isEnabled = true
             default:
                 // Failed to connect or did disconnect
                 toggleConnectionIndicator(enable: false)
                 if let reachability = appDelegate.reachability, case .reachableViaWiFi = reachability.currentReachabilityStatus {
+                    connectBtn.isHidden = false
                     connectBtn.isEnabled = true
                 }
-                talkBtn.backgroundColor = UIColor.red
+                talkBtn.backgroundColor = UIColor.green
                 talkBtn.isEnabled = false
-                speakerSegmContr.isEnabled = false
         }
     }
     
@@ -140,6 +145,15 @@ class WalkieTalkieVC: UIViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    @IBAction func settingBtn_disable(_ sender: UIButton) {
+        settingsBtn.isEnabled = false
+    }
+    
+    @IBAction func stop_disconnect(_ sender: UIButton) {
+        self.connectionManager.disconnect()
+        settingsBtn.isEnabled = true
     }
     
 }

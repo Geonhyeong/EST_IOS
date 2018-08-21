@@ -2,8 +2,8 @@
 //  ConnectionManager.swift
 //  Walkie-Talkie
 //
-//  Created by Eugene on 26.02.17.
-//  Copyright © 2017 Eugenious. All rights reserved.
+//  Created by GeonHyeong on 18.08.22.
+//  Copyright © 2018 GeonHyeong. All rights reserved.
 //
 
 
@@ -163,6 +163,11 @@ extension ConnectionManager {
             socket.send(data, withTimeout: 0, tag: 0)
         }
     }
+    
+    func disconnect()
+    {
+        socket.close()
+    }
 
 }
 
@@ -187,7 +192,7 @@ extension ConnectionManager {
         NotificationCenter.default.post(name: UDP.didDisconnect, object: error)
         let alert = UIAlertController(title: "Error", message:"Socket was closed. Probably because the remote host stopped accepting connections.", preferredStyle: .alert)
         alert.addAction(.init(title: "OK", style: .cancel, handler: nil))
-        appDelegate.visibleVC(nil)?.present(alert, animated: true, completion: nil)
+//        appDelegate.visibleVC(nil)?.present(alert, animated: true, completion: nil)
     }
     
     internal func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?)

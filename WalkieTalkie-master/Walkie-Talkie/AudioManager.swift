@@ -2,8 +2,8 @@
 //  AudioManager.swift
 //  Walkie-Talkie
 //
-//  Created by Eugene on 06.03.17.
-//  Copyright © 2017 Eugenious. All rights reserved.
+//  Created by GeonHyeong on 18.08.22.
+//  Copyright © 2018 GeonHyeong. All rights reserved.
 //
 
 import AVFoundation
@@ -19,7 +19,7 @@ final class AudioManager {
     
     enum SpeakerType:Int {
         case LoudSpeaker = 0
-        case InternaSpeaker
+        case InternalSpeaker
     }
     
     fileprivate let audioEngine = AVAudioEngine()
@@ -39,7 +39,7 @@ final class AudioManager {
     
     private let disposeBag = DisposeBag()
 
-    init(_ micToggler:Observable<MicState>, speakerToggle:Observable<SpeakerType>)throws
+    init(_ micToggler:Observable<MicState>, speakerToggle:Observable<SpeakerType>, TalkBtn:UIButton, DisconnectBtn:UIButton)throws
     {
         
         try setupAudioSession()
@@ -58,11 +58,15 @@ final class AudioManager {
             
             switch state {
             case .On:
+                DisconnectBtn.isEnabled = true
+                TalkBtn.isEnabled = false
                 guard let srtSelf = self else {
                     return
                 }
                 srtSelf.downMixer.installTap(onBus: 0, bufferSize: UInt32(srtSelf.outputIOBufferSize), format: srtSelf.downMixer.outputFormat(forBus: 0), block: srtSelf.processMicData)
             case .Off:
+                TalkBtn.isEnabled = true
+                DisconnectBtn.isEnabled = false
                 self?.downMixer.removeTap(onBus: 0)
             }
 

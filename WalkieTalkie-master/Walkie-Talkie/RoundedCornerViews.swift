@@ -2,8 +2,8 @@
 //  RoundedCornerView.swift
 //  Walkie-Talkie
 //
-//  Created by Eugene on 27.02.17.
-//  Copyright © 2017 Eugenious. All rights reserved.
+//  Created by GeonHyeong on 18.08.22.
+//  Copyright © 2018 GeonHyeong. All rights reserved.
 //
 
 import Foundation

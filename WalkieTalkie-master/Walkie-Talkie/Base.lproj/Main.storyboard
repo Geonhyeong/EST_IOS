@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gxH-qS-gqZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gxH-qS-gqZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -43,7 +43,7 @@
                                 <state key="normal" title="Connect"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pCl-Tt-8NU">
-                                <rect key="frame" x="127" y="273.5" width="120" height="120"/>
+                                <rect key="frame" x="52.5" y="273.5" width="120" height="120"/>
                                 <color key="backgroundColor" red="0.7371684235" green="1" blue="0.34523926719999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="6eU-ga-Kxg"/>
@@ -55,14 +55,10 @@
                                         <real key="value" value="30"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="settingBtn_disable:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y3a-YX-wLE"/>
+                                </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="hew-ZE-CoJ">
-                                <rect key="frame" x="15" y="79" width="129" height="29"/>
-                                <segments>
-                                    <segment title="Speaker"/>
-                                    <segment title="Internal"/>
-                                </segments>
-                            </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="drh-sw-egH" customClass="AddressView" customModule="Walkie_Talkie" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="617" width="375" height="50"/>
                                 <subviews>
@@ -119,16 +115,33 @@
                                     <outletCollection property="addressLabs" destination="esT-Sn-Fk9" collectionClass="NSMutableArray" id="QRW-7S-dLF"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="97U-ey-zRx">
+                                <rect key="frame" x="202" y="274" width="120" height="120"/>
+                                <color key="backgroundColor" red="1" green="0.27872413530000001" blue="0.28673058569999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="5aW-AI-pEo"/>
+                                    <constraint firstAttribute="width" constant="120" id="CYl-z4-whF"/>
+                                </constraints>
+                                <state key="normal" title="Disconnect"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="stop_disconnect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JKi-AY-iMc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="97U-ey-zRx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="75" id="3BJ-yE-0QU"/>
                             <constraint firstItem="sXM-qp-jQN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="17" id="6Dd-tb-mH7"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="drh-sw-egH" secondAttribute="bottom" id="83K-rg-Gfn"/>
                             <constraint firstAttribute="trailing" secondItem="drh-sw-egH" secondAttribute="trailing" id="88h-sz-ymf"/>
+                            <constraint firstItem="97U-ey-zRx" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="E4n-zi-JVt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jLt-cW-OoS" secondAttribute="trailing" id="Ml7-qX-4jL"/>
-                            <constraint firstItem="hew-ZE-CoJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="15" id="N8o-1R-cyg"/>
-                            <constraint firstItem="pCl-Tt-8NU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dlN-UT-h6L"/>
-                            <constraint firstItem="hew-ZE-CoJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="15" id="e2g-Qb-WPL"/>
+                            <constraint firstItem="pCl-Tt-8NU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-75" id="dlN-UT-h6L"/>
                             <constraint firstAttribute="trailingMargin" secondItem="sXM-qp-jQN" secondAttribute="trailing" id="jA2-w3-dvf"/>
                             <constraint firstItem="pCl-Tt-8NU" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ozE-JA-WHW"/>
                             <constraint firstItem="drh-sw-egH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ut5-6A-YrL"/>
@@ -142,8 +155,8 @@
                         <outlet property="addressView" destination="drh-sw-egH" id="lLt-gf-iME"/>
                         <outlet property="connectBtn" destination="jLt-cW-OoS" id="Yvx-LD-fBa"/>
                         <outlet property="connectionIndicator" destination="sXM-qp-jQN" id="UCG-0F-qCV"/>
+                        <outlet property="disconnectBtn" destination="97U-ey-zRx" id="LJb-ek-n3x"/>
                         <outlet property="settingsBtn" destination="0Ev-ou-mIh" id="jwb-gZ-jBo"/>
-                        <outlet property="speakerSegmContr" destination="hew-ZE-CoJ" id="dux-Ah-cFE"/>
                         <outlet property="talkBtn" destination="pCl-Tt-8NU" id="saz-bP-5Ua"/>
                         <segue destination="HRh-yc-9Qt" kind="show" identifier="toSettings" id="4Ww-lv-QMH"/>
                     </connections>
@@ -161,7 +174,7 @@
                         <viewControllerLayoutGuide type="bottom" id="REt-h0-raj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NDo-Yk-6qc">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="remote address" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="b2p-94-MOp" customClass="TextField" customModule="Walkie_Talkie" customModuleProvider="target">
@@ -257,7 +270,7 @@
                     <toolbarItems/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oXl-GI-Tq9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

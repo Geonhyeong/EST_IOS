@@ -2,8 +2,8 @@
 //  Walkie-Talkie-Bridging-Header.h
 //  Walkie-Talkie
 //
-//  Created by Eugene on 17.05.17.
-//  Copyright © 2017 Eugenious. All rights reserved.
+//  Created by GeonHyeong on 18.08.22.
+//  Copyright © 2018 GeonHyeong. All rights reserved.
 //
 
 #ifndef Walkie_Talkie_Bridging_Header_h
