@@ -154,44 +154,6 @@ final class AudioManager {
         }
     }
     
-//    func startSpeakers(data:Data)
-//    {
-//        print("받기 시작")
-//        let speakerThreadQueue = DispatchQueue(label: "SpeakerOn")
-//        speakerThreadQueue.async {
-//            if (data.count  > 0 && self.playerCofigured && self.audioEngine.isRunning)
-//            {
-//                NSLog("[Recieved]")
-//                if data != nil
-//                {
-//                    let playThread = DispatchQueue(label: "Play")
-//                    playThread.async {
-//                        do{
-//                            try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
-//                            try AVAudioSession.sharedInstance().setActive(true)
-//
-//                            let mi = try AVAudioPlayer(data: data)
-//
-//                            print("3")
-//
-//                            self.playerList.append(mi)
-//                            self.playerList.last?.prepareToPlay()
-//                            self.playerList.last?.play()
-//                        } catch{
-//                            print("error 발생 \(error.localizedDescription)")
-//                        }
-//
-//                    }
-//                }
-//                else{
-//                    NSLog("Data is Empty")
-//                }
-//            }
-//        }
-//
-//    }
-    
-    
     fileprivate func processMicData(buffer : AVAudioPCMBuffer, timeE: AVAudioTime)
     {
         buffer.frameLength = 250

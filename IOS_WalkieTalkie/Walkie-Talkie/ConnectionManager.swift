@@ -185,15 +185,15 @@ extension ConnectionManager {
         
     }
     
-    func startSpeaker(receiveBlock:@escaping (Data)->()) throws
-    {
-        if let reachabilityStatus = appDelegate.reachability?.currentReachabilityStatus, case .reachableViaWiFi = reachabilityStatus{
-            _receiveBlock = receiveBlock
-            print("receive")
-            }else{
-                throw(UDPError.noWifi)
-            }
-    }
+//    func startSpeaker(receiveBlock:@escaping (Data)->()) throws
+//    {
+//        if let reachabilityStatus = appDelegate.reachability?.currentReachabilityStatus, case .reachableViaWiFi = reachabilityStatus{
+//            _receiveBlock = receiveBlock
+//            print("receive")
+//            }else{
+//                throw(UDPError.noWifi)
+//            }
+//    }
     
     func sendData(data:Data)
     {

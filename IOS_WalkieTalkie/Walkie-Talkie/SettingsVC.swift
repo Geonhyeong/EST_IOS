@@ -9,7 +9,7 @@ import SwiftValidator
 
 class SettingsVC: UIViewController, UITextFieldDelegate {
     
-    fileprivate let remoteIP = "192.168.35.14"
+    fileprivate let remoteIP = "52.231.188.85"
     fileprivate let validator = Validator()
     
     @IBOutlet weak var idTF: TextField!
