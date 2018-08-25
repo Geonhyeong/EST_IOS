@@ -238,15 +238,27 @@
                                     <action selector="saveParams:" destination="HRh-yc-9Qt" eventType="touchUpInside" id="i4W-Fn-14J"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="phone number" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="02X-vL-mAi" customClass="TextField" customModule="Walkie_Talkie" customModuleProvider="target">
+                                <rect key="frame" x="67" y="386.5" width="240" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="Suj-LF-pdy"/>
+                                    <constraint firstAttribute="height" constant="30" id="lWy-fF-Ips"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="b2p-94-MOp" firstAttribute="centerX" secondItem="M1Y-hP-fYA" secondAttribute="centerX" id="2K4-qE-g9x"/>
                             <constraint firstItem="AjM-vX-tf0" firstAttribute="top" secondItem="M1Y-hP-fYA" secondAttribute="bottom" constant="19" id="CuJ-JO-6IP"/>
+                            <constraint firstItem="02X-vL-mAi" firstAttribute="centerX" secondItem="NDo-Yk-6qc" secondAttribute="centerX" id="JgS-rm-BBR"/>
                             <constraint firstItem="M1Y-hP-fYA" firstAttribute="centerY" secondItem="NDo-Yk-6qc" secondAttribute="centerY" id="Ljx-ma-Hsh"/>
                             <constraint firstItem="Pce-uf-m00" firstAttribute="width" secondItem="M1Y-hP-fYA" secondAttribute="width" id="Q1D-58-0zE"/>
                             <constraint firstItem="M1Y-hP-fYA" firstAttribute="centerX" secondItem="NDo-Yk-6qc" secondAttribute="centerX" id="S2S-SI-mba"/>
                             <constraint firstItem="Pce-uf-m00" firstAttribute="centerX" secondItem="NDo-Yk-6qc" secondAttribute="centerX" id="VBy-cI-50g"/>
+                            <constraint firstItem="02X-vL-mAi" firstAttribute="top" secondItem="AjM-vX-tf0" secondAttribute="bottom" constant="21" id="aKS-oD-qXV"/>
                             <constraint firstItem="M1Y-hP-fYA" firstAttribute="top" secondItem="b2p-94-MOp" secondAttribute="bottom" constant="21" id="mjz-Iq-xoq"/>
                             <constraint firstItem="AjM-vX-tf0" firstAttribute="centerX" secondItem="NDo-Yk-6qc" secondAttribute="centerX" id="sHh-UW-ULE"/>
                             <constraint firstItem="REt-h0-raj" firstAttribute="top" secondItem="Pce-uf-m00" secondAttribute="bottom" constant="131" id="tiB-uV-rsD"/>
@@ -256,6 +268,7 @@
                     <connections>
                         <outlet property="addressTF" destination="b2p-94-MOp" id="OXc-B0-6rA"/>
                         <outlet property="inPortTF" destination="AjM-vX-tf0" id="bCn-6r-WTm"/>
+                        <outlet property="phoneNumberTF" destination="02X-vL-mAi" id="o4O-qn-uWH"/>
                         <outlet property="remotePortTF" destination="M1Y-hP-fYA" id="eP1-wn-Cot"/>
                     </connections>
                 </viewController>

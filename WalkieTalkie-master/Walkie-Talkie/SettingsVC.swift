@@ -18,6 +18,7 @@ class SettingsVC: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var addressTF: TextField!
     @IBOutlet weak var remotePortTF: TextField!
     @IBOutlet weak var inPortTF: TextField!
+    @IBOutlet weak var phoneNumberTF: TextField!
     
     var connectionManager:ConnectionManager!
     
@@ -33,7 +34,8 @@ class SettingsVC: UIViewController, UITextFieldDelegate {
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:))))
         validator.registerField(addressTF, rules:[RequiredRule(message: "address is empty"),IPV4Rule(message: "address is invalid")])
         validator.registerField(remotePortTF, rules: [RequiredRule(message: "remote port is missing"), CharacterSetRule(characterSet: .decimalDigits, message: "port may contain only numbers")])
-        validator.registerField(inPortTF, rules: [RequiredRule(message: "in port is missing"), CharacterSetRule(characterSet: .decimalDigits, message: "port may contain only numbers")])
+        validator.registerField(inPortTF, rules: [RequiredRule(message: "inport is missing"), CharacterSetRule(characterSet: .decimalDigits, message: "port may contain only numbers")])
+        validator.registerField(phoneNumberTF, rules: [RequiredRule(message: "phone number is empty"), CharacterSetRule(characterSet: .decimalDigits, message: "phone number may contain only numbers")])
         addressTF.delegate = self
     }
     
@@ -48,7 +50,11 @@ class SettingsVC: UIViewController, UITextFieldDelegate {
         }
         if let rmAddress = connectionManager.remoteAddress {
             addressTF.text = rmAddress
-        }else if let wifiAddress = ConnectionManager.getWiFiAddress() {
+        }
+        if let phoneNumber = connectionManager.phoneNumber {
+            phoneNumberTF.text = phoneNumber
+        }
+        else if let wifiAddress = ConnectionManager.getWiFiAddress() {
             let commonAddressPart = wifiAddress.substring(to: wifiAddress.index(after: wifiAddress.indexes(of: ".").last!))
             addressTF.text = commonAddressPart
         }
@@ -63,6 +69,7 @@ class SettingsVC: UIViewController, UITextFieldDelegate {
             self.connectionManager.remotePort = Int(self.remotePortTF.text!)
             self.connectionManager.incommingPort = Int(self.inPortTF.text!)
             self.connectionManager.remoteAddress = self.addressTF.text
+            self.connectionManager.phoneNumber = self.phoneNumberTF.text
             
             if val_errs.count > 0  {
                 let err_strs = val_errs.map{ $1.errorMessage}.joined(separator: ", ")

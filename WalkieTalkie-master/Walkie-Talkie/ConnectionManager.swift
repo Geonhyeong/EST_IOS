@@ -15,6 +15,7 @@ import RxSwift
 private let INCOMMING_PORT_KEY = "INCOMMING_PORT_KEY"
 private let REMOTE_PORT_KEY = "REMOTE_PORT_KEY"
 private let REMOTE_ADDRESS_KEY = "REMOTE_ADDRESS_KEY"
+private let PHONE_NUMBER_KEY = "PHONE_NUMBER_KEY"
 
 
 enum UDPError:Error {
@@ -45,6 +46,7 @@ final class ConnectionManager: NSObject, GCDAsyncUdpSocketDelegate{
     fileprivate var _remotePort:Int?
     fileprivate var _incommingPort:Int?
     fileprivate var _remoteAddress:String?
+    fileprivate var _phoneNumber:String?
     fileprivate var _receiveBlock:((Data)->())?
     
     private let disposeBag = DisposeBag()
@@ -96,6 +98,22 @@ final class ConnectionManager: NSObject, GCDAsyncUdpSocketDelegate{
 
         }
     }
+    
+    var phoneNumber:String?
+    {
+        get {
+            if (_phoneNumber == nil){
+                _phoneNumber = UserDefaults.standard.string(forKey: PHONE_NUMBER_KEY)
+            }
+            return _phoneNumber
+        }
+        set{
+            _phoneNumber = newValue
+            UserDefaults.standard.set(newValue, forKey: PHONE_NUMBER_KEY)
+            UserDefaults.standard.synchronize()
+            
+        }
+    }
 // MARK: 
 //    ======================================================================================
     override init()
@@ -111,7 +129,7 @@ final class ConnectionManager: NSObject, GCDAsyncUdpSocketDelegate{
         
         dataObservable.subscribe(onNext: { [weak self] data in
             
-            let proto = Header(command: "VOI:", idlength: 11, id: "01087602581", datalength: data.count).toByteArray()
+            let proto = Header(command: "VOI:", idlength: 11, id: (self?.phoneNumber!)!, datalength: data.count).toByteArray()
             var datat = Data(bytes: proto)
             datat.append(data)
 
@@ -120,16 +138,6 @@ final class ConnectionManager: NSObject, GCDAsyncUdpSocketDelegate{
 //            self?.sendData(data: data)
         }).disposed(by: disposeBag)
         
-    }
-    
-    func intToByte(int : Int) -> [UInt8] {
-        var bytearray : [UInt8] = [0, 0, 0, 0]
-        bytearray[0] = UInt8(int>>24 & 0xff)
-        bytearray[1] = UInt8(int>>16 & 0xff)
-        bytearray[2] = UInt8(int>>8 & 0xff)
-        bytearray[3] = UInt8(int & 0xff)
-        
-        return bytearray
     }
     
     @objc fileprivate func reachabilityChanged()
